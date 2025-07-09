@@ -1,0 +1,89 @@
+/* Footer base styles */
+.footer {
+  background-color: #1f2937;
+  color: #ffffff;
+  padding: 1rem 0;
+  width: 100%;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Footer grid layout */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .footer-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+/* Footer sections */
+.footer-section {
+  margin-bottom: 0.5rem;
+}
+
+.footer-heading {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+.footer-text {
+  color: #9ca3af;
+  line-height: 1.5;
+  font-size: 0.85rem;
+}
+
+/* Footer links */
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.3rem;
+}
+
+.footer-link {
+  color: #9ca3af;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 0.85rem;
+}
+
+.footer-link:hover {
+  color: #ffffff;
+}
+
+/* Address styling */
+.footer-address {
+  color: #9ca3af;
+  font-style: normal;
+  line-height: 1.5;
+  font-size: 0.85rem;
+}
+
+.footer-address p {
+  margin-bottom: 0.3rem;
+}
+
+/* Copyright section */
+.footer-copyright {
+  border-top: 1px solid #374151;
+  padding-top: 0.75rem;
+  text-align: center;
+  color: #9ca3af;
+  font-size: 0.75rem;
+}
