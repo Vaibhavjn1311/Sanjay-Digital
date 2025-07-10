@@ -23,10 +23,12 @@ const Footer = () => {
           <div className="footer-section">
             <h3 className="footer-heading">Contact Us</h3>
             <address className="footer-address">
-              <p>123 Studio Street</p>
-              <p>City, State 12345</p>
-              <p>Phone: (123) 456-7890</p>
-              <p>Email: info@photostudio.com</p>
+              22, Shri Navkar, Pin,
+              Laxmi Bai Marg, Jhabua,<br />
+              Madhya Pradesh 457661<br />
+              Inida
+              <p>Phone: 7694071317 ,9425192481 ,8319692794 ,9407422114</p>
+              <p>Email: sanjaydigitaljhabua@gmail.com</p>
             </address>
           </div>
         </div>
