@@ -123,7 +123,7 @@ const Products = () => {
       ) : products.length > 0 ? (
         <div className="products-grid">
           {products.map(product => (
-            <ProductCard key={product._id} product={product} />
+            <ProductCard key={product._id} product={product} hideDescription={true} />
           ))}
         </div>
       ) : (
