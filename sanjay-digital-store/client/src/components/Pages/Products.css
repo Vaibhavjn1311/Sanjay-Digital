@@ -84,7 +84,7 @@
 /* On mobile (below 768px): 2 products per row */
 @media (max-width: 767px) {
   .products-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     gap: 16px;
   }
 }
@@ -96,7 +96,7 @@
 
 @media (max-width: 767px) {
   .products-grid.loading {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
 }
 }
 
