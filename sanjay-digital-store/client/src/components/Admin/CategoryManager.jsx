@@ -6,7 +6,9 @@ const CategoryManager = () => {
   const [categories, setCategories] = useState([]);
   const [newCategory, setNewCategory] = useState('');
   // const [newSubcategory, setNewSubcategory] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('');
+
+  // const [selectedCategory, setSelectedCategory] = useState('');
+  
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {

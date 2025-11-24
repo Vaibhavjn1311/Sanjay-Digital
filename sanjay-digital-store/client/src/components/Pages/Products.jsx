@@ -48,21 +48,6 @@ const Products = () => {
     setSearchParams(params);
   };
 
-  const handleSubcategoryChange = (e) => {
-    const subcategory = e.target.value;
-    setSelectedSubcategory(subcategory);
-    
-    const params = {};
-    if (selectedCategory) params.category = selectedCategory;
-    if (subcategory) params.subcategory = subcategory;
-    setSearchParams(params);
-  };
-
-  const getSubcategories = () => {
-    if (!selectedCategory) return [];
-    const category = categories.find(cat => cat._id === selectedCategory);
-    return category?.subcategories || [];
-  };
 
   return (
     <div className="products-container">

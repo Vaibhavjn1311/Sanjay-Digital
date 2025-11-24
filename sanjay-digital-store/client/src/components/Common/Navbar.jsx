@@ -18,9 +18,14 @@ const Navbar = () => {
       <div className="navbar-container">
         <div className="navbar-brand">
           <Link to="/" className="navbar-logo">
-            <img src={logo} alt="Sanjay Photo Studios Logo" className="logo-img" />
+            <img
+              src={logo}
+              alt="Sanjay Digital Studio"
+              className="logo-img"
+            />
             Sanjay Digital Studio
           </Link>
+
         </div>
 
         {/* Mobile menu button */}

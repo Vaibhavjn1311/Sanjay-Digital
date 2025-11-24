@@ -63,19 +63,23 @@ const Home = () => {
           <div className="about-content">
             <div className="about-text">
               <p>
-                We are a professional photo studio specializing in portrait photography, event coverage, 
-                and creative photo shoots. Our team of experienced photographers will help you capture 
+                We are a professional photo studio specializing in portrait photography, event coverage,
+                and creative photo shoots. Our team of experienced photographers will help you capture
                 your most precious moments.
               </p>
               <p>
-                Our gift shop offers a carefully curated selection of unique items that make perfect 
-                presents for any occasion. From personalized photo frames to custom-made albums, we have 
+                Our gift shop offers a carefully curated selection of unique items that make perfect
+                presents for any occasion. From personalized photo frames to custom-made albums, we have
                 something special for everyone.
               </p>
             </div>
             <div className="about-image">
               <div className="image-placeholder">
-                <img className='home-cover-img' src={homeCoverImg} placeholder="Home Cover not found" />
+                <img
+                  className="home-cover-img"
+                  src={homeCoverImg}
+                  alt="Home cover banner"
+                />
               </div>
             </div>
           </div>
