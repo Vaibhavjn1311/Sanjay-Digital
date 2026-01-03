@@ -1,30 +1,21 @@
-import './Contact.css';
+import "./Contact.css";
 
 const Contact = () => {
   return (
     <div className="contact-container">
       <h1 className="contact-title">Contact Us</h1>
-      
+
       <div className="contact-grid">
         <div className="contact-form-container">
           <h2>Get in Touch</h2>
           <form className="contact-form">
             <div className="form-group">
-              <label htmlFor="name">
-                Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                className="form-input"
-              />
+              <label htmlFor="name">Name</label>
+              <input type="text" id="name" name="name" className="form-input" />
             </div>
-            
+
             <div className="form-group">
-              <label htmlFor="email">
-                Email
-              </label>
+              <label htmlFor="email">Email</label>
               <input
                 type="email"
                 id="email"
@@ -32,11 +23,9 @@ const Contact = () => {
                 className="form-input"
               />
             </div>
-            
+
             <div className="form-group">
-              <label htmlFor="phone">
-                Phone
-              </label>
+              <label htmlFor="phone">Phone</label>
               <input
                 type="tel"
                 id="phone"
@@ -44,11 +33,9 @@ const Contact = () => {
                 className="form-input"
               />
             </div>
-            
+
             <div className="form-group">
-              <label htmlFor="message">
-                Message
-              </label>
+              <label htmlFor="message">Message</label>
               <textarea
                 id="message"
                 name="message"
@@ -56,29 +43,27 @@ const Contact = () => {
                 className="form-textarea"
               ></textarea>
             </div>
-            
-            <button
-              type="submit"
-              className="submit-button"
-            >
+
+            <button type="submit" className="submit-button">
               Send Message
             </button>
           </form>
         </div>
-        
+
         <div className="contact-info-container">
           <h2>Our Information</h2>
           <div className="info-section">
             <div className="info-group">
               <h3>Address</h3>
               <address>
-                22, Shri Navkar, Pin,  
-                Laxmi Bai Marg, Jhabua,<br />
-                Madhya Pradesh 457661<br />
+                22, Shri Navkar, Pin, Laxmi Bai Marg, Jhabua,
+                <br />
+                Madhya Pradesh 457661
+                <br />
                 Inida
               </address>
             </div>
-            
+
             <div className="info-group">
               <h3>Contact Details</h3>
               <ul className="info-list">
@@ -87,7 +72,7 @@ const Contact = () => {
                 <li>WhatsApp: 7694071317</li>
               </ul>
             </div>
-            
+
             <div className="info-group">
               <h3>Business Hours</h3>
               <ul className="info-list">

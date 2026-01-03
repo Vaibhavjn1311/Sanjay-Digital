@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
-import api from '../../services/api';
-import ProductCard from '../Common/ProductCard';
+import { useEffect, useState } from "react";
+import api from "../../services/api";
+import ProductCard from "../Common/ProductCard";
 import homeCoverImg from "./HomeCover.jpeg";
-import './Home.css';
+import "./Home.css";
 
 const Home = () => {
   const [featuredProducts, setFeaturedProducts] = useState([]);
@@ -11,10 +11,10 @@ const Home = () => {
   useEffect(() => {
     const fetchFeaturedProducts = async () => {
       try {
-        const response = await api.get('/products?limit=4');
+        const response = await api.get("/products?limit=4");
         setFeaturedProducts(response.data);
       } catch (error) {
-        console.error('Error fetching featured products:', error);
+        console.error("Error fetching featured products:", error);
       } finally {
         setIsLoading(false);
       }
@@ -29,7 +29,9 @@ const Home = () => {
       <section className="hero-section">
         <div className="hero-content">
           <h1>Welcome to Our Photo Studio & Gift Shop</h1>
-          <p className="hero-subtitle">Capture memories and find the perfect gifts for your loved ones</p>
+          <p className="hero-subtitle">
+            Capture memories and find the perfect gifts for your loved ones
+          </p>
           <a href="/products" className="cta-button">
             Browse Products
           </a>
@@ -48,8 +50,12 @@ const Home = () => {
             </div>
           ) : (
             <div className="products-grid">
-              {featuredProducts.map(product => (
-                <ProductCard key={product._id} product={product} hideDescription={true} />
+              {featuredProducts.map((product) => (
+                <ProductCard
+                  key={product._id}
+                  product={product}
+                  hideDescription={true}
+                />
               ))}
             </div>
           )}
@@ -63,13 +69,15 @@ const Home = () => {
           <div className="about-content">
             <div className="about-text">
               <p>
-                We are a professional photo studio specializing in portrait photography, event coverage,
-                and creative photo shoots. Our team of experienced photographers will help you capture
-                your most precious moments.
+                We are a professional photo studio specializing in portrait
+                photography, event coverage, and creative photo shoots. Our team
+                of experienced photographers will help you capture your most
+                precious moments.
               </p>
               <p>
-                Our gift shop offers a carefully curated selection of unique items that make perfect
-                presents for any occasion. From personalized photo frames to custom-made albums, we have
+                Our gift shop offers a carefully curated selection of unique
+                items that make perfect presents for any occasion. From
+                personalized photo frames to custom-made albums, we have
                 something special for everyone.
               </p>
             </div>

@@ -6,9 +6,11 @@
   /* align-self: ; */
 }
 
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
 }
 

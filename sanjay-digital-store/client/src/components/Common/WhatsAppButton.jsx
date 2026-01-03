@@ -1,13 +1,13 @@
-import React from 'react';
-import './WhatsAppButton.css'; // Import the CSS file
+import React from "react";
+import "./WhatsAppButton.css"; // Import the CSS file
 
 const WhatsAppButton = ({ productName, productPrice, productImage }) => {
-  const phoneNumber = '+917694071317';
+  const phoneNumber = "+917694071317";
 
   // Use the Cloudinary URL directly or fallback
-  const imageUrl = productImage?.startsWith('http')
+  const imageUrl = productImage?.startsWith("http")
     ? productImage
-    : 'https://example.com/placeholder-product.jpg';
+    : "https://example.com/placeholder-product.jpg";
 
   const message = `
 🛍️ *${productName}*
@@ -21,7 +21,7 @@ ${imageUrl}
 
   const handleClick = () => {
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-    window.open(url, '_blank');
+    window.open(url, "_blank");
   };
 
   return (

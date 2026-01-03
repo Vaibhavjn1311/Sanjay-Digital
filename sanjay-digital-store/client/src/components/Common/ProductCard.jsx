@@ -1,10 +1,10 @@
-import { Link } from 'react-router-dom';
-import WhatsAppButton from './WhatsAppButton';
-import './ProductCard.css'; // Import the CSS file
+import { Link } from "react-router-dom";
+import WhatsAppButton from "./WhatsAppButton";
+import "./ProductCard.css"; // Import the CSS file
 
 const ProductCard = ({ product, hideDescription = false }) => {
   // Use the first image URL directly (Cloudinary) or fallback to placeholder
-  const productImage = product.images?.[0] || '/placeholder-product.jpg';
+  const productImage = product.images?.[0] || "/placeholder-product.jpg";
 
   return (
     <div className="product-card">
@@ -20,9 +20,7 @@ const ProductCard = ({ product, hideDescription = false }) => {
         <div className="product-details">
           <h3 className="product-title">{product.name}</h3>
           {!hideDescription && (
-            <p className="product-description">
-              {product.description}
-            </p>
+            <p className="product-description">{product.description}</p>
           )}
           <div className="product-price-container">
             <span className="product-price">₹{product.price.toFixed(2)}</span>

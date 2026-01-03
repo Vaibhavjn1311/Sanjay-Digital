@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import api from '../../services/api';
-import WhatsAppButton from '../Common/WhatsAppButton';
-import './ProductDetail.css'; // Import the CSS file
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import api from "../../services/api";
+import WhatsAppButton from "../Common/WhatsAppButton";
+import "./ProductDetail.css"; // Import the CSS file
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -17,7 +17,7 @@ const ProductDetail = () => {
         setProduct(response.data);
         setIsLoading(false);
       } catch (error) {
-        console.error('Error fetching product:', error);
+        console.error("Error fetching product:", error);
         setIsLoading(false);
       }
     };
@@ -59,7 +59,9 @@ const ProductDetail = () => {
       <div className="product-detail-container">
         <div className="product-detail-card not-found">
           <h2>Product not found</h2>
-          <p>The product you're looking for doesn't exist or has been removed.</p>
+          <p>
+            The product you're looking for doesn't exist or has been removed.
+          </p>
         </div>
       </div>
     );
@@ -75,7 +77,9 @@ const ProductDetail = () => {
           <div className="product-images-section">
             <div className="product-main-image-container">
               <img
-                src={product.images[selectedImage] || '/placeholder-product.jpg'}
+                src={
+                  product.images[selectedImage] || "/placeholder-product.jpg"
+                }
                 alt={product.name}
                 className="product-main-image"
               />
@@ -87,7 +91,7 @@ const ProductDetail = () => {
                   <button
                     key={index}
                     onClick={() => setSelectedImage(index)}
-                    className={`thumbnail-button ${selectedImage === index ? 'active' : ''}`}
+                    className={`thumbnail-button ${selectedImage === index ? "active" : ""}`}
                   >
                     <img
                       src={img}
@@ -109,15 +113,17 @@ const ProductDetail = () => {
             <div className="product-description">
               <h2>Description</h2>
               <p title={product.description} className="break-words">
-                {product.description || 'No description available.'}
+                {product.description || "No description available."}
               </p>
             </div>
-
 
             <div className="product-details">
               <h2>Details</h2>
               <ul className="details-list">
-                <li><span className="detail-label">Category:</span> {product.category?.name || 'N/A'}</li>
+                <li>
+                  <span className="detail-label">Category:</span>{" "}
+                  {product.category?.name || "N/A"}
+                </li>
                 {/* <li><span className="detail-label">Subcategory:</span> {product.subcategory?.name || 'N/A'}</li> */}
               </ul>
             </div>

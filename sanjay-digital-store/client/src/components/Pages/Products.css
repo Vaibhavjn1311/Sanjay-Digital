@@ -97,7 +97,7 @@
 @media (max-width: 767px) {
   .products-grid.loading {
     grid-template-columns: repeat(1, 1fr);
-}
+  }
 }
 
 /* Skeleton Cards */
@@ -109,7 +109,8 @@
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {

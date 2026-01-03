@@ -1,35 +1,39 @@
-import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import api from '../../services/api';
-import ProductCard from '../Common/ProductCard';
-import './Products.css'; // Import the CSS file
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
+import api from "../../services/api";
+import ProductCard from "../Common/ProductCard";
+import "./Products.css"; // Import the CSS file
 
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams();
-  const [selectedCategory, setSelectedCategory] = useState(searchParams.get('category') || '');
-  const [selectedSubcategory, setSelectedSubcategory] = useState(searchParams.get('subcategory') || '');
+  const [selectedCategory, setSelectedCategory] = useState(
+    searchParams.get("category") || "",
+  );
+  const [selectedSubcategory, setSelectedSubcategory] = useState(
+    searchParams.get("subcategory") || "",
+  );
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        
+
         // Fetch categories
-        const categoriesResponse = await api.get('/categories');
+        const categoriesResponse = await api.get("/categories");
         setCategories(categoriesResponse.data);
-        
+
         // Fetch products with filters
         const params = {};
         if (selectedCategory) params.category = selectedCategory;
         if (selectedSubcategory) params.subcategory = selectedSubcategory;
-        
-        const productsResponse = await api.get('/products', { params });
+
+        const productsResponse = await api.get("/products", { params });
         setProducts(productsResponse.data);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       } finally {
         setIsLoading(false);
       }
@@ -41,18 +45,17 @@ const Products = () => {
   const handleCategoryChange = (e) => {
     const category = e.target.value;
     setSelectedCategory(category);
-    setSelectedSubcategory('');
-    
+    setSelectedSubcategory("");
+
     const params = {};
     if (category) params.category = category;
     setSearchParams(params);
   };
 
-
   return (
     <div className="products-container">
       <h1 className="products-title">Our Products</h1>
-      
+
       {/* Filters */}
       <div className="filters-container">
         <h2 className="filters-title">Filter Products</h2>
@@ -68,14 +71,14 @@ const Products = () => {
               className="filter-select"
             >
               <option value="">All Categories</option>
-              {categories.map(category => (
+              {categories.map((category) => (
                 <option key={category._id} value={category._id}>
                   {category.name}
                 </option>
               ))}
             </select>
           </div>
-          
+
           {/* <div className="filter-group">
             <label htmlFor="subcategory" className="filter-label">
               Subcategory
@@ -97,7 +100,7 @@ const Products = () => {
           </div> */}
         </div>
       </div>
-      
+
       {/* Products Grid */}
       {isLoading ? (
         <div className="products-grid loading">
@@ -107,8 +110,12 @@ const Products = () => {
         </div>
       ) : products.length > 0 ? (
         <div className="products-grid">
-          {products.map(product => (
-            <ProductCard key={product._id} product={product} hideDescription={true} />
+          {products.map((product) => (
+            <ProductCard
+              key={product._id}
+              product={product}
+              hideDescription={true}
+            />
           ))}
         </div>
       ) : (

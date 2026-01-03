@@ -3,7 +3,11 @@
   max-width: 900px;
   margin: 2rem auto;
   padding: 0 1rem;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
 }
 
 .product-form-title {
@@ -19,7 +23,9 @@
   background-color: #fff;
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 .form-grid {
@@ -337,8 +343,12 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Responsive Adjustments */
@@ -346,24 +356,24 @@
   .product-form-container {
     padding: 0 0.5rem;
   }
-  
+
   .product-form {
     padding: 1.5rem;
   }
-  
+
   .form-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .image-upload-container {
     padding: 1.5rem;
   }
-  
+
   .image-upload-or::before,
   .image-upload-or::after {
     width: 60px;
   }
-  
+
   .preview-container {
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   }
@@ -373,7 +383,7 @@
   .form-actions {
     flex-direction: column-reverse;
   }
-  
+
   .cancel-btn,
   .submit-btn {
     width: 100%;

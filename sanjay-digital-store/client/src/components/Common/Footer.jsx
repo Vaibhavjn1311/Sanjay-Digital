@@ -1,4 +1,4 @@
-import './Footer.css';
+import "./Footer.css";
 
 const Footer = () => {
   return (
@@ -14,18 +14,35 @@ const Footer = () => {
           <div className="footer-section">
             <h3 className="footer-heading">Quick Links</h3>
             <ul className="footer-links">
-              <li><a href="/" className="footer-link">Home</a></li>
-              <li><a href="/products" className="footer-link">Products</a></li>
-              <li><a href="/categories" className="footer-link">Categories</a></li>
-              <li><a href="/contact" className="footer-link">Contact</a></li>
+              <li>
+                <a href="/" className="footer-link">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="/products" className="footer-link">
+                  Products
+                </a>
+              </li>
+              <li>
+                <a href="/categories" className="footer-link">
+                  Categories
+                </a>
+              </li>
+              <li>
+                <a href="/contact" className="footer-link">
+                  Contact
+                </a>
+              </li>
             </ul>
           </div>
           <div className="footer-section">
             <h3 className="footer-heading">Contact Us</h3>
             <address className="footer-address">
-              22, Shri Navkar, Pin,
-              Laxmi Bai Marg, Jhabua,<br />
-              Madhya Pradesh 457661<br />
+              22, Shri Navkar, Pin, Laxmi Bai Marg, Jhabua,
+              <br />
+              Madhya Pradesh 457661
+              <br />
               Inida
               <p>Phone: 7694071317 ,9425192481 ,8319692794 ,9407422114</p>
               <p>Email: sanjaydigitaljhabua@gmail.com</p>
@@ -33,7 +50,10 @@ const Footer = () => {
           </div>
         </div>
         <div className="footer-copyright">
-          <p>&copy; {new Date().getFullYear()} Sanjay Digital Studio. All rights reserved.</p>
+          <p>
+            &copy; {new Date().getFullYear()} Sanjay Digital Studio. All rights
+            reserved.
+          </p>
         </div>
       </div>
     </footer>

@@ -1,6 +1,6 @@
-import { Navigate } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
-import './PrivateRoute.css'; // For any additional styling
+import { Navigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
+import "./PrivateRoute.css"; // For any additional styling
 
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useAuth(); // Assuming your AuthContext has loading state
@@ -16,7 +16,10 @@ const PrivateRoute = ({ children }) => {
 
   if (!user) {
     // Optional: You could add a message to localStorage to show on login page
-    sessionStorage.setItem('authRedirectMessage', 'Please login to access this page');
+    sessionStorage.setItem(
+      "authRedirectMessage",
+      "Please login to access this page",
+    );
     return <Navigate to="/admin/login" replace />;
   }
 

@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import api from '../../services/api';
-import './ProductForm.css';
+import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import api from "../../services/api";
+import "./ProductForm.css";
 
 const ProductForm = () => {
   const { id } = useParams();
@@ -11,12 +11,12 @@ const ProductForm = () => {
   const [subcategories, setSubcategories] = useState([]);
 
   const [product, setProduct] = useState({
-    name: '',
-    description: '',
+    name: "",
+    description: "",
     price: 0,
-    category: '',
-    subcategory: '',
-    images: [] // holds URLs of existing images (Cloudinary URLs)
+    category: "",
+    subcategory: "",
+    images: [], // holds URLs of existing images (Cloudinary URLs)
   });
 
   const [selectedImages, setSelectedImages] = useState([]); // new images (File objects)
@@ -28,10 +28,10 @@ const ProductForm = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await api.get('/categories');
+        const response = await api.get("/categories");
         setCategories(response.data);
       } catch (error) {
-        console.error('Error fetching categories:', error);
+        console.error("Error fetching categories:", error);
       }
     };
 
@@ -52,11 +52,13 @@ const ProductForm = () => {
 
           // Load subcategories if category exists
           if (data.category) {
-            const subcatRes = await api.get(`/categories/${data.category}/subcategories`);
+            const subcatRes = await api.get(
+              `/categories/${data.category}/subcategories`,
+            );
             setSubcategories(subcatRes.data);
           }
         } catch (error) {
-          console.error('Error fetching product:', error);
+          console.error("Error fetching product:", error);
         }
       }
     };
@@ -70,10 +72,12 @@ const ProductForm = () => {
     const fetchSubcategories = async () => {
       if (product.category) {
         try {
-          const response = await api.get(`/categories/${product.category}/subcategories`);
+          const response = await api.get(
+            `/categories/${product.category}/subcategories`,
+          );
           setSubcategories(response.data);
         } catch (error) {
-          console.error('Error fetching subcategories:', error);
+          console.error("Error fetching subcategories:", error);
         }
       }
     };
@@ -84,10 +88,10 @@ const ProductForm = () => {
   // Handle text field change
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setProduct(prev => ({
+    setProduct((prev) => ({
       ...prev,
       [name]: value,
-      ...(name === 'category' && { subcategory: '' }), // reset subcategory on category change
+      ...(name === "category" && { subcategory: "" }), // reset subcategory on category change
     }));
   };
 
@@ -96,10 +100,10 @@ const ProductForm = () => {
     const files = Array.from(e.target.files || e.dataTransfer.files);
     if (files.length === 0) return;
 
-    const previews = files.map(file => URL.createObjectURL(file));
+    const previews = files.map((file) => URL.createObjectURL(file));
 
-    setSelectedImages(prev => [...prev, ...files]);
-    setPreviewImages(prev => [...prev, ...previews]);
+    setSelectedImages((prev) => [...prev, ...files]);
+    setPreviewImages((prev) => [...prev, ...previews]);
     setIsDragOver(false);
   };
 
@@ -112,7 +116,7 @@ const ProductForm = () => {
     if (index < product.images.length) {
       const updated = [...product.images];
       updated.splice(index, 1);
-      setProduct(prev => ({ ...prev, images: updated }));
+      setProduct((prev) => ({ ...prev, images: updated }));
     } else {
       const updated = [...selectedImages];
       updated.splice(index - product.images.length, 1);
@@ -127,32 +131,32 @@ const ProductForm = () => {
 
     try {
       const formData = new FormData();
-      formData.append('name', product.name);
-      formData.append('description', product.description);
-      formData.append('price', product.price);
-      formData.append('category', product.category);
-      formData.append('subcategory', product.subcategory);
+      formData.append("name", product.name);
+      formData.append("description", product.description);
+      formData.append("price", product.price);
+      formData.append("category", product.category);
+      formData.append("subcategory", product.subcategory);
 
       // Append existing Cloudinary image URLs
-      product.images.forEach(img => formData.append('existingImages', img));
+      product.images.forEach((img) => formData.append("existingImages", img));
 
       // Append new files to upload
-      selectedImages.forEach(img => formData.append('images', img));
+      selectedImages.forEach((img) => formData.append("images", img));
 
       // POST or PUT depending on mode
       if (id) {
         await api.put(`/products/${id}`, formData, {
-          headers: { 'Content-Type': 'multipart/form-data' }
+          headers: { "Content-Type": "multipart/form-data" },
         });
       } else {
-        await api.post('/products', formData, {
-          headers: { 'Content-Type': 'multipart/form-data' }
+        await api.post("/products", formData, {
+          headers: { "Content-Type": "multipart/form-data" },
         });
       }
 
-      navigate('/admin/dashboard');
+      navigate("/admin/dashboard");
     } catch (error) {
-      console.error('Error saving product:', error);
+      console.error("Error saving product:", error);
     } finally {
       setIsLoading(false);
     }
@@ -160,7 +164,9 @@ const ProductForm = () => {
 
   return (
     <div className="product-form-container">
-      <h1 className="product-form-title">{id ? 'Edit Product' : 'Add New Product'}</h1>
+      <h1 className="product-form-title">
+        {id ? "Edit Product" : "Add New Product"}
+      </h1>
       <form onSubmit={handleSubmit} className="product-form">
         <div className="form-grid">
           <div className="form-group">
@@ -208,7 +214,7 @@ const ProductForm = () => {
               required
             >
               <option value="">Select a category</option>
-              {categories.map(category => (
+              {categories.map((category) => (
                 <option key={category._id} value={category._id}>
                   {category.name}
                 </option>
@@ -253,8 +259,8 @@ const ProductForm = () => {
 
           <div className="form-group full-width">
             <label className="form-label">Product Images</label>
-            <div 
-              className={`image-upload-container ${isDragOver ? 'drag-over' : ''}`}
+            <div
+              className={`image-upload-container ${isDragOver ? "drag-over" : ""}`}
               onDragOver={(e) => {
                 e.preventDefault();
                 setIsDragOver(true);
@@ -267,24 +273,43 @@ const ProductForm = () => {
             >
               <div className="image-upload-content">
                 <div className="image-upload-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                    />
                   </svg>
                 </div>
                 <div className="image-upload-text">
-                  <label
-                    htmlFor="file-upload"
-                    className="image-upload-label"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                  <label htmlFor="file-upload" className="image-upload-label">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                      />
                     </svg>
                     <span>Select files</span>
                   </label>
                   <span className="image-upload-or">or</span>
                   <p>Drag and drop images here</p>
                 </div>
-                <p className="image-upload-hint">Supports JPG, PNG, GIF up to 10MB</p>
+                <p className="image-upload-hint">
+                  Supports JPG, PNG, GIF up to 10MB
+                </p>
                 <input
                   id="file-upload"
                   name="file-upload"
@@ -320,8 +345,18 @@ const ProductForm = () => {
             ) : (
               <div className="empty-state">
                 <div className="empty-state-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1}
+                      d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    />
                   </svg>
                 </div>
                 <p>No images selected</p>
@@ -333,24 +368,28 @@ const ProductForm = () => {
         <div className="form-actions">
           <button
             type="button"
-            onClick={() => navigate('/admin/dashboard')}
+            onClick={() => navigate("/admin/dashboard")}
             className="cancel-btn"
           >
             Cancel
           </button>
-          <button
-            type="submit"
-            disabled={isLoading}
-            className="submit-btn"
-          >
+          <button type="submit" disabled={isLoading} className="submit-btn">
             {isLoading ? (
               <>
                 <svg className="loading-spinner" viewBox="0 0 50 50">
-                  <circle cx="25" cy="25" r="20" fill="none" strokeWidth="5"></circle>
+                  <circle
+                    cx="25"
+                    cy="25"
+                    r="20"
+                    fill="none"
+                    strokeWidth="5"
+                  ></circle>
                 </svg>
                 Saving...
               </>
-            ) : 'Save Product'}
+            ) : (
+              "Save Product"
+            )}
           </button>
         </div>
       </form>
