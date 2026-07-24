@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import api from "../../services/api";
 import ProductCard from "../Common/ProductCard";
 import homeCoverImg from "./HomeCover.jpeg";
@@ -32,9 +33,9 @@ const Home = () => {
           <p className="hero-subtitle">
             Capture memories and find the perfect gifts for your loved ones
           </p>
-          <a href="/products" className="cta-button">
+          <Link to="/products" className="cta-button">
             Browse Products
-          </a>
+          </Link>
         </div>
       </section>
 

@@ -7,10 +7,22 @@
   display: flex; /* make it a flex container */
   flex-direction: column; /* vertical stacking */
   height: 100%; /* ensures equal card height in grids */
+  animation: fadeUp 0.6s ease-out backwards;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .product-card:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .product-link {
@@ -21,51 +33,60 @@
   color: inherit;
 }
 
+.product-image-container {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 8px 8px 0 0;
+}
+
 .product-image-container img {
   width: 100%;
-  height: 200px;
-  object-fit: scale-down;
-  border-radius: 8px 8px 0 0;
-  transition: transform 0.3s ease;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
 }
 
 .product-card:hover .product-image-container img {
-  transform: scale(1.03);
+  transform: scale(1.08);
 }
 
 .product-details {
-  padding: 16px;
+  padding: 12px;
   flex-grow: 1; /* pushes the button container to bottom */
 }
 
 .product-title {
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: #1f2937; /* gray-800 */
+  font-size: 1rem; /* 16px */
+  font-weight: 700;
+  color: #282c3f;
+  margin: 0 0 4px 0;
 }
 
 .product-description {
-  color: #4b5563; /* gray-600 */
-  font-size: 0.875rem;
-  margin-bottom: 8px;
-  white-space: pre-wrap;
-  word-break: break-word;
+  color: #737373;
+  font-size: 0.85rem;
+  margin: 0 0 8px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .product-price-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
-  margin-top: 8px;
+  margin-top: 4px;
 }
 
 .product-price {
-  color: #4f46e5; /* indigo-600 */
+  color: #282c3f;
   font-weight: 700;
+  font-size: 1rem;
 }
 
 .whatsapp-button-container {
-  padding: 0 16px 16px;
+  padding: 0 12px 12px;
   margin-top: auto; /* ensures this sticks to bottom */
 }
 

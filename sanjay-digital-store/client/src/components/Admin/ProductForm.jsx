@@ -8,14 +8,11 @@ const ProductForm = () => {
   const navigate = useNavigate();
 
   const [categories, setCategories] = useState([]);
-  const [subcategories, setSubcategories] = useState([]);
-
   const [product, setProduct] = useState({
     name: "",
     description: "",
     price: 0,
     category: "",
-    subcategory: "",
     images: [], // holds URLs of existing images (Cloudinary URLs)
   });
 
@@ -23,6 +20,7 @@ const ProductForm = () => {
   const [previewImages, setPreviewImages] = useState([]); // combined previews
   const [isLoading, setIsLoading] = useState(false);
   const [isDragOver, setIsDragOver] = useState(false);
+  const [error, setError] = useState("");
 
   // Fetch categories and product if editing
   useEffect(() => {
@@ -44,21 +42,13 @@ const ProductForm = () => {
           setProduct({
             ...data,
             category: data.category?._id || data.category,
-            subcategory: data.subcategory?._id || data.subcategory,
             images: data.images || [],
           });
 
           setPreviewImages([...data.images]);
-
-          // Load subcategories if category exists
-          if (data.category) {
-            const subcatRes = await api.get(
-              `/categories/${data.category}/subcategories`,
-            );
-            setSubcategories(subcatRes.data);
-          }
-        } catch (error) {
-          console.error("Error fetching product:", error);
+        } catch (err) {
+          console.error("Error fetching product:", err);
+          setError("Failed to fetch product details.");
         }
       }
     };
@@ -67,31 +57,12 @@ const ProductForm = () => {
     if (id) fetchProduct();
   }, [id]);
 
-  // Fetch subcategories when category changes
-  useEffect(() => {
-    const fetchSubcategories = async () => {
-      if (product.category) {
-        try {
-          const response = await api.get(
-            `/categories/${product.category}/subcategories`,
-          );
-          setSubcategories(response.data);
-        } catch (error) {
-          console.error("Error fetching subcategories:", error);
-        }
-      }
-    };
-
-    fetchSubcategories();
-  }, [product.category]);
-
   // Handle text field change
   const handleChange = (e) => {
     const { name, value } = e.target;
     setProduct((prev) => ({
       ...prev,
       [name]: value,
-      ...(name === "category" && { subcategory: "" }), // reset subcategory on category change
     }));
   };
 
@@ -135,7 +106,6 @@ const ProductForm = () => {
       formData.append("description", product.description);
       formData.append("price", product.price);
       formData.append("category", product.category);
-      formData.append("subcategory", product.subcategory);
 
       // Append existing Cloudinary image URLs
       product.images.forEach((img) => formData.append("existingImages", img));
@@ -155,8 +125,9 @@ const ProductForm = () => {
       }
 
       navigate("/admin/dashboard");
-    } catch (error) {
-      console.error("Error saving product:", error);
+    } catch (err) {
+      console.error("Error saving product:", err);
+      setError("Failed to save product. Please try again.");
     } finally {
       setIsLoading(false);
     }
@@ -167,6 +138,7 @@ const ProductForm = () => {
       <h1 className="product-form-title">
         {id ? "Edit Product" : "Add New Product"}
       </h1>
+      {error && <div className="error-message" style={{ color: "red", marginBottom: "1rem", textAlign: "center" }}>{error}</div>}
       <form onSubmit={handleSubmit} className="product-form">
         <div className="form-grid">
           <div className="form-group">
@@ -221,27 +193,6 @@ const ProductForm = () => {
               ))}
             </select>
           </div>
-
-          {/* <div className="form-group">
-            <label htmlFor="subcategory" className="form-label">
-              Subcategory
-            </label>
-            <select
-              id="subcategory"
-              name="subcategory"
-              value={product.subcategory}
-              onChange={handleChange}
-              className="form-select"
-              disabled={!product.category}
-            >
-              <option value="">Select a subcategory</option>
-              {subcategories.map(subcategory => (
-                <option key={subcategory._id} value={subcategory._id}>
-                  {subcategory.name}
-                </option>
-              ))}
-            </select>
-          </div> */}
 
           <div className="form-group full-width">
             <label htmlFor="description" className="form-label">

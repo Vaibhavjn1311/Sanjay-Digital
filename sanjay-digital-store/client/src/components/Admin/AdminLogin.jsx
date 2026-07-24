@@ -20,20 +20,6 @@ const AdminLogin = () => {
     }
   };
 
-  //   const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     // Temporary development check (remove in production)
-  //     if (username === "admin" && password === "admin123") {
-  //       await login(username, password);
-  //       navigate('/admin/dashboard');
-  //     } else {
-  //       throw new Error('Invalid credentials');
-  //     }
-  //   } catch (err) {
-  //     setError('Invalid credentials');
-  //   }
-  // };
   return (
     <div className="admin-login-container">
       <div className="login-form-wrapper">

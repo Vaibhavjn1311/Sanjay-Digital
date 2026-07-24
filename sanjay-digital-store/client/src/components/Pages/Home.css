@@ -78,8 +78,8 @@
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
   padding: 0.5rem;
 }
 

@@ -6,14 +6,17 @@ import "./AdminDashboard.css"; // Import the CSS file
 const AdminDashboard = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const response = await api.get("/products?limit=10");
         setProducts(response.data);
-      } catch (error) {
-        console.error("Error fetching products:", error);
+        setError("");
+      } catch (err) {
+        console.error("Error fetching products:", err);
+        setError("Failed to fetch products.");
       } finally {
         setIsLoading(false);
       }
@@ -27,10 +30,12 @@ const AdminDashboard = () => {
       return;
 
     try {
+      setError("");
       await api.delete(`/products/${id}`);
       setProducts((prev) => prev.filter((product) => product._id !== id));
-    } catch (error) {
-      console.error("Error deleting product:", error);
+    } catch (err) {
+      console.error("Error deleting product:", err);
+      setError("Failed to delete product.");
     }
   };
 
@@ -42,6 +47,8 @@ const AdminDashboard = () => {
           Add New Product
         </Link>
       </div>
+      
+      {error && <div className="error-message" style={{ color: "red", textAlign: "center", marginBottom: "1rem" }}>{error}</div>}
 
       <div className="manage-categories-link">
         <Link to="/admin/categories">Manage Categories →</Link>
@@ -93,7 +100,6 @@ const AdminDashboard = () => {
                     <td>
                       <div className="category-info">
                         {product.category?.name || "-"}
-                        {/* {product.subcategory?.name || '-'} */}
                       </div>
                     </td>
                     <td>
