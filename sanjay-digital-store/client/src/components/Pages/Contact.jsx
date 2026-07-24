@@ -1,4 +1,5 @@
 import "./Contact.css";
+import homeCoverImg from "./HomeCover.jpeg";
 
 const Contact = () => {
   return (
@@ -6,48 +7,34 @@ const Contact = () => {
       <h1 className="contact-title">Contact Us</h1>
 
       <div className="contact-grid">
-        <div className="contact-form-container">
-          <h2>Get in Touch</h2>
-          <form className="contact-form">
-            <div className="form-group">
-              <label htmlFor="name">Name</label>
-              <input type="text" id="name" name="name" className="form-input" />
+        <div className="contact-form-container about-section-contact">
+          {/* <h2>About Us</h2> */}
+          <div className="about-content">
+            <div className="about-text">
+              <p>
+                We are a professional photo studio specializing in portrait
+                photography, event coverage, and creative photo shoots. Our team
+                of experienced photographers will help you capture your most
+                precious moments.
+              </p>
+              <p>
+                Our gift shop offers a carefully curated selection of unique
+                items that make perfect presents for any occasion. From
+                personalized photo frames to custom-made albums, we have
+                something special for everyone.
+              </p>
             </div>
-
-            <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                className="form-input"
-              />
+            <div className="about-image">
+              <div className="image-placeholder">
+                <img
+                  className="home-cover-img"
+                  src={homeCoverImg}
+                  alt="Home cover banner"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '0.5rem', maxHeight: '300px' }}
+                />
+              </div>
             </div>
-
-            <div className="form-group">
-              <label htmlFor="phone">Phone</label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                className="form-input"
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="message">Message</label>
-              <textarea
-                id="message"
-                name="message"
-                rows="4"
-                className="form-textarea"
-              ></textarea>
-            </div>
-
-            <button type="submit" className="submit-button">
-              Send Message
-            </button>
-          </form>
+          </div>
         </div>
 
         <div className="contact-info-container">
@@ -67,9 +54,11 @@ const Contact = () => {
             <div className="info-group">
               <h3>Contact Details</h3>
               <ul className="info-list">
-                <li>Phone: 7694071317 ,9425192481 ,8319692794 ,9407422114</li>
+                <li>Phone: <br />
+                  7694071317 <br /> 9425192481 <br /> 8319692794 <br /> 9407422114</li>
                 <li>Email: sanjaydigitaljhabua@gmail.com</li>
-                <li>WhatsApp: 7694071317</li>
+                <li>WhatsApp: <br />
+                  7694071317</li>
               </ul>
             </div>
 

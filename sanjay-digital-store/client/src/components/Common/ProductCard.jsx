@@ -18,7 +18,7 @@ const ProductCard = ({ product, hideDescription = false }) => {
           />
         </div>
         <div className="product-details">
-          <h3 className="product-title">{product.name}</h3>
+          <h3 className="product-title" title={product.name}>{product.name}</h3>
           {!hideDescription && (
             <p className="product-description">{product.description}</p>
           )}

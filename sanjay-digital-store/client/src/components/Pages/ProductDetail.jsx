@@ -70,7 +70,7 @@ const ProductDetail = () => {
   return (
     <div className="product-detail-container">
       <div className="product-detail-card">
-        <h1 className="product-title">{product.name}</h1>
+        <h1 className="detail-product-title">{product.name}</h1>
 
         <div className="product-detail-grid">
           {/* Product Images */}
@@ -78,14 +78,18 @@ const ProductDetail = () => {
             <div className="product-main-image-container">
               <img
                 src={
-                  product.images[selectedImage] || "/placeholder-product.jpg"
+                  (product.images && product.images[selectedImage]) || "https://placehold.co/600x600?text=No+Image"
                 }
                 alt={product.name}
                 className="product-main-image"
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = "https://placehold.co/600x600?text=No+Image";
+                }}
               />
             </div>
 
-            {product.images.length > 1 && (
+            {product.images && product.images.length > 1 && (
               <div className="product-thumbnails">
                 {product.images.map((img, index) => (
                   <button
@@ -107,10 +111,10 @@ const ProductDetail = () => {
           {/* Product Details */}
           <div className="product-info-section">
             <div className="product-price-container">
-              <span className="product-price">₹{product.price.toFixed(2)}</span>
+              <span className="detail-product-price">₹{product.price.toFixed(2)}</span>
             </div>
 
-            <div className="product-description">
+            <div className="detail-product-description">
               <h2>Description</h2>
               <p title={product.description} className="break-words">
                 {product.description || "No description available."}

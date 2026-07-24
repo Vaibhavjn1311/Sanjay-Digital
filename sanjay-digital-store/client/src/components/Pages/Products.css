@@ -19,6 +19,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 24px;
   margin-bottom: 32px;
+  animation: fadeInUp 0.6s ease-out forwards;
 }
 
 .filters-title {
@@ -79,6 +80,8 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
+  animation: fadeInUp 0.8s ease-out 0.2s forwards;
+  opacity: 0;
 }
 
 /* On mobile (below 768px): 2 products per row */

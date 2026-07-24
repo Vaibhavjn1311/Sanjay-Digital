@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../../services/api";
 import ProductCard from "../Common/ProductCard";
-import homeCoverImg from "./HomeCover.jpeg";
 import "./Home.css";
 
 const Home = () => {
@@ -63,37 +62,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* About Section */}
-      <section className="about-section">
-        <div className="section-container">
-          <h2>About Us</h2>
-          <div className="about-content">
-            <div className="about-text">
-              <p>
-                We are a professional photo studio specializing in portrait
-                photography, event coverage, and creative photo shoots. Our team
-                of experienced photographers will help you capture your most
-                precious moments.
-              </p>
-              <p>
-                Our gift shop offers a carefully curated selection of unique
-                items that make perfect presents for any occasion. From
-                personalized photo frames to custom-made albums, we have
-                something special for everyone.
-              </p>
-            </div>
-            <div className="about-image">
-              <div className="image-placeholder">
-                <img
-                  className="home-cover-img"
-                  src={homeCoverImg}
-                  alt="Home cover banner"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };
