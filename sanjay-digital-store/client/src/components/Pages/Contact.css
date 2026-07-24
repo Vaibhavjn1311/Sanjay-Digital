@@ -100,15 +100,15 @@
 
 @media (min-width: 640px) {
   .about-content {
-    flex-direction: row;
+    flex-direction: column;
   }
 
   .about-text {
-    flex: 1;
+    flex: none;
   }
 
   .about-image {
-    flex: 1;
+    flex: none;
   }
 
   .image-placeholder {
